@@ -17,37 +17,84 @@
 
       <div id="content">
         <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-          <li class="active"><a href="#all" data-toggle="tab">All <span class="badge label label-success">42</span></a></li>
-          <li><a href="#online" data-toggle="tab">Online <span class="badge">6</span></a></li>
-          <li><a href="#offline" data-toggle="tab">Offline <span class="badge">36</span></a></li>
+          <li class="active"><a href="#all" data-toggle="tab">All <span class="label label-primary">{{count.all}}</span></a></li>
+          <li><a href="#online" data-toggle="tab">Online <span class="label label-success">{{count.online}}</span></a></li>
+          <li><a href="#offline" data-toggle="tab">Offline <span class="label label-danger">{{count.offline}}</span></a></li>
         </ul>
         <div id="my-tab-content" class="tab-content">
           <div class="tab-pane active" id="all">
 
             <!-- All Streamers -->
-            <div class="home-doctors  clearfix">
+            <div class="home-items  clearfix">
 
               <div class="container">
                 <div class="row">
                   <div class="col-lg-12 col-md-12 col-sm-12 ">
                     <div class="slogan-section animated fadeInUp clearfix ae-animation-fadeInUp">
-                      <h2 class="bg-warning">ALL STREAMERS</h2>
+                      <h2><label class="label label-primary">ALL STREAMERS</label></h2>
                     </div>
                   </div>
                 </div>
 
-                <div class="row">
+                <div class="row list">
 
                   <!-- entry -->
                   <div class="col-lg-3 col-md-3 col-sm-6  text-center doc-item" ng-repeat="channel in channels ">
-                    <div class="common-doctor animated fadeInUp clearfix ae-animation-fadeInUp">
+                    <div class="common-item animated fadeInUp clearfix ae-animation-fadeInUp">
 
                       <ul class="list-inline social-lists animate">
                         <li><a href="{{channel.link}}"><i class="fa fa-twitch"></i></a></li>
                       </ul>
 
                       <figure>
-                        <img width="670" height="500" src="{{channel.logo}}" class="doc-img animate attachment-gallery-post-single wp-post-image" alt=""> 
+                        <img  src="{{channel.logo}}" class="img-thumbnail doc-img animate attachment-gallery-post-single wp-post-image" alt=""> 
+                      </figure>
+
+                      <div class="text-content">
+                        <h5>{{channel.name}}</h5>
+                        <!-- <div class="for-border"></div> -->
+                        <small>{{channel.status}}</small><br>
+                        <label class="{{channel.statusClass}} label-status">{{channel.statusType}}</label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- // -->
+
+                  <div class="visible-sm clearfix margin-gap"></div>
+                </div>
+
+              </div>
+
+            </div>
+            <!-- //All Streamers -->
+          </div>
+          <div class="tab-pane" id="online">
+
+            <!-- Online Streamers -->
+            <div class="home-items  clearfix">
+
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12 ">
+                    <div class="slogan-section animated fadeInUp clearfix ae-animation-fadeInUp">
+                      <h2 ><label class="label label-success">ONLINE STREAMERS</label></h2>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row list">
+
+                  <!-- entry online-->
+                  <div class="col-lg-3 col-md-3 col-sm-6  text-center doc-item" ng-repeat="channel in channels | filter:'Online'">
+                    <div class="common-item animated fadeInUp clearfix ae-animation-fadeInUp">
+
+                      <ul class="list-inline social-lists animate">
+                        <li><a href="{{channel.link}}"><i class="fa fa-twitch"></i></a></li>
+                      </ul>
+
+                      <figure>
+                        <img  src="{{channel.logo}}" class="img-thumbnail doc-img animate attachment-gallery-post-single wp-post-image" alt=""> 
                       </figure>
 
                       <div class="text-content">
@@ -67,87 +114,42 @@
               </div>
 
             </div>
-            <!-- //All Streamers -->
-          </div>
-          <div class="tab-pane" id="online">
-
-            <!-- Online Streamers -->
-            <div class="home-doctors  clearfix">
-
-              <div class="container">
-                <div class="row">
-                  <div class="col-lg-12 col-md-12 col-sm-12 ">
-                    <div class="slogan-section animated fadeInUp clearfix ae-animation-fadeInUp">
-                      <h2 class="bg-success">ONLINE STREAMERS</h2>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row">
-
-                  <!-- entry1 -->
-                  <div class="col-lg-3 col-md-3 col-sm-6  text-center doc-item">
-                    <div class="common-doctor animated fadeInUp clearfix ae-animation-fadeInUp">
-
-                      <ul class="list-inline social-lists animate">
-                        <li><a href="#"><i class="fa fa-twitch"></i></a></li>
-                      </ul>
-
-                      <figure>
-                        <img width="670" height="500" src="http://somesweetphoto.smugmug.com/photos/i-VHdG3sd/0/O/i-VHdG3sd.jpg" class="doc-img animate attachment-gallery-post-single wp-post-image" alt="doctor-2"> 
-                      </figure>
-
-                      <div class="text-content">
-                        <h5>Dr. Jeremy</h5>
-                        <!-- <div class="for-border"></div> -->
-                        <h5><small>Dentist Title</small></h5>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- // -->
-
-                  <div class="visible-sm clearfix margin-gap"></div>
-                </div>
-
-              </div>
-
-            </div>
             <!-- //Online Streamers -->
           </div>
 
 
           <div class="tab-pane" id="offline">
             <!-- Offline Streamers -->
-            <div class="home-doctors  clearfix">
+            <div class="home-items  clearfix">
 
               <div class="container">
                 <div class="row">
                   <div class="col-lg-12 col-md-12 col-sm-12 ">
                     <div class="slogan-section animated fadeInUp clearfix ae-animation-fadeInUp">
-                      <h2 class="bg-danger">OFFLINE STREAMERS</h2>
+                      <h2 ><label class="label label-danger">OFFLINE STREAMERS</label></h2>
                     </div>
                   </div>
                 </div>
 
-                <div class="row">
+                <div class="row list">
 
-                  <!-- entry1 -->
-                  <div class="col-lg-3 col-md-3 col-sm-6  text-center doc-item">
-                    <div class="common-doctor animated fadeInUp clearfix ae-animation-fadeInUp">
+                  <!-- entry offline -->
+                  <div class="col-lg-3 col-md-3 col-sm-6  text-center doc-item" ng-repeat="channel in channels | filter: 'Offline'">
+                    <div class="common-item animated fadeInUp clearfix ae-animation-fadeInUp">
 
                       <ul class="list-inline social-lists animate">
-                        <li><a href="#"><i class="fa fa-twitch"></i></a></li>
+                        <li><a href="{{channel.link}}"><i class="fa fa-twitch"></i></a></li>
                       </ul>
 
                       <figure>
-                        <img width="670" height="500" src="http://somesweetphoto.smugmug.com/photos/i-VHdG3sd/0/O/i-VHdG3sd.jpg" class="doc-img animate attachment-gallery-post-single wp-post-image" alt="doctor-2"> 
+                        <img  src="{{channel.logo}}" class="img-thumbnail doc-img animate attachment-gallery-post-single wp-post-image" alt=""> 
                       </figure>
 
                       <div class="text-content">
-                        <h5>Dr. Jeremy</h5>
+                        <h5>{{channel.name}}</h5>
                         <!-- <div class="for-border"></div> -->
-                        <h5><small>Dentist Title</small></h5>
+                        <small>{{channel.status}}</small><br>
+                        <label class="{{channel.statusClass}}">{{channel.statusType}}</label>
                       </div>
                     </div>
                   </div>

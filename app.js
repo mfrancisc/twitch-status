@@ -14,14 +14,18 @@ function TwitchCtrl ($scope, $q, $http)
     "beohoff"
   ];
 
+  var count = {
+    all: ExisistingChannels.length,
+    online: 0,
+    offline: 0
+  };
+
    $scope.channels = [];
    var channels = [];
     angular.forEach(ExisistingChannels, function(channelName){
    var channel = {
-     status : "Currently offline",
      name : channelName,
      link : "",
-     logo : ""
    };
 
    //var streamsCall =  $http.jsonp('https://api.twitch.tv/kraken/streams/'+channelName+'?callback=JSON_CALLBACK');
@@ -39,12 +43,20 @@ function TwitchCtrl ($scope, $q, $http)
       channel.status = "Currently offline"; 
       channel.statusClass = "label label-danger"; 
       channel.statusType = "Offline";
-    } 
+      count.offline++;
+    } else {
+      count.online++;
+    }
+
+    if(channel.logo === null) {
+      channel.logo = "https://farm2.staticflickr.com/1509/24968993283_5d084ca703_o.jpg";//unknown image
+    }
     channels.push(channel);
     });
   });
 
   $scope.channels = channels;
+  $scope.count = count;
 
 
 

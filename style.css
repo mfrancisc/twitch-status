@@ -8,60 +8,59 @@
 
 /*=============== Home-team ===============*/
 
-.home-doctors {
+.home-items {
   text-align: center;
   padding: 70px 0 80px;
   background: #f0f5f6;
 }
 
-.home-doctors h2 {
+.home-items h2 {
   font-weight: normal;
 }
 
-.home-doctors .common-doctor {
+.home-items .common-item {
   background-color: #fff;
 }
-.home-doctors .common-doctor figure {
+.home-items .common-item figure {
   overflow: hidden;
   width: 100%;
   height: 196px;
 }
 
-.home-doctors img {
+.home-items img {
   width: 100%;
   height: auto;
-  margin-top: -6em;
 }
 
-.home-doctors .common-doctor h5 {
+.home-items .common-item h5 {
   margin: 0 0 7px;
   font-size: 18px;
   font-weight: 700;
   color: #3a3c41;
 }
-.home-doctors .common-doctor .for-border {
+.home-items .common-item .for-border {
   margin-bottom: 20px;
 }
-.home-doctors .common-doctor .text-content {
+.home-items .common-item .text-content {
   padding: 19px 14px 13px;
 }
-.home-doctors.doctors-var-two {
+.home-items.items-var-two {
   text-align: left;
   background-color: #fff;
 }
-.home-doctors.doctors-var-two .slogan-section {
+.home-items.items-var-two .slogan-section {
   text-align: left;
 }
-.home-doctors.doctors-var-two .common-doctor {
+.home-items.items-var-two .common-item {
   background-color: transparent;
 }
-.home-doctors.doctors-var-two .common-doctor .for-border {
+.home-items.items-var-two .common-item .for-border {
   display: none;
 }
-.home-doctors.doctors-var-two .common-doctor .text-content {
+.home-items.items-var-two .common-item .text-content {
   padding: 20px 0 20px;
 }
-.home-doctors.doctors-var-two .text-center {
+.home-items.items-var-two .text-center {
   text-align: left;
 }
 
@@ -70,7 +69,7 @@
   text-align: center;
 }
 
-.home-doctors .common-doctor .for-border {
+.home-items .common-item .for-border {
   margin-bottom: 20px;
 }
 
@@ -81,14 +80,14 @@
   border: none;
 }
 
-.home-doctors .common-doctor h5 small {
+.home-items .common-item h5 small {
   color: #008fd5;
   font-weight: bold;
   font-size: 0.8em;
   font-style: italic;
 }
 
-.home-doctors .common-doctor ul{
+.home-items .common-item ul{
   position: absolute;
   top: 50%;
   left: 0;
@@ -100,7 +99,7 @@
   z-index: 1;
 }
 
-.home-doctors .common-doctor li a {
+.home-items .common-item li a {
   background: #008fd5;
   color: white;
   padding: 0.75em;
@@ -149,5 +148,25 @@
   opacity: 1;
 }
 
+.list {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.doc-item {
+  margin-bottom: 15px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.label-status {
+
+}
 
 /*=============== //Home-team ===============*/
