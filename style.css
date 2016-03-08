@@ -1,172 +1,41 @@
-.animate {
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-
-/*=============== Home-team ===============*/
-
-.home-items {
-  text-align: center;
-  padding: 70px 0 80px;
-  background: #f0f5f6;
-}
-
-.home-items h2 {
-  font-weight: normal;
-}
-
-.home-items .common-item {
-  background-color: #fff;
-}
-.home-items .common-item figure {
-  overflow: hidden;
-  width: 100%;
-  height: 196px;
-}
-
-.home-items img {
-  width: 100%;
-  height: auto;
-}
-
-.home-items .common-item h5 {
-  margin: 0 0 7px;
-  font-size: 18px;
-  font-weight: 700;
-  color: #3a3c41;
-}
-.home-items .common-item .for-border {
-  margin-bottom: 20px;
-}
-.home-items .common-item .text-content {
-  padding: 19px 14px 13px;
-}
-.home-items.items-var-two {
-  text-align: left;
-  background-color: #fff;
-}
-.home-items.items-var-two .slogan-section {
-  text-align: left;
-}
-.home-items.items-var-two .common-item {
-  background-color: transparent;
-}
-.home-items.items-var-two .common-item .for-border {
+.src-image {
   display: none;
 }
-.home-items.items-var-two .common-item .text-content {
-  padding: 20px 0 20px;
-}
-.home-items.items-var-two .text-center {
-  text-align: left;
-}
 
-.slogan-section {
-  margin-bottom: 50px;
+.card {
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #CCC;
+  border-radius: 8px;
   text-align: center;
+  padding: 0;
+  background-color: #284c79;
+  color: rgb(136, 172, 217);
 }
 
-.home-items .common-item .for-border {
-  margin-bottom: 20px;
-}
-
-.for-border {
-  height: 11px;
-  width: 100%;
-  background: transparent url(http://omarhabash.com/nova/wp-content/uploads/2014/08/feature-border.png) center center no-repeat;
-  border: none;
-}
-
-.home-items .common-item h5 small {
-  color: #008fd5;
-  font-weight: bold;
-  font-size: 0.8em;
-  font-style: italic;
-}
-
-.home-items .common-item ul{
+.card .header-bg {
+  /* This stretches the canvas across the entire hero unit */
   position: absolute;
-  top: 50%;
+  top: 0;
   left: 0;
   width: 100%;
-  margin-top: -28px;
-  text-align: center;
-  margin-top: 10em;
-  opacity: 0;
+  height: 70px;
+  border-bottom: 1px #FFF solid;
+  /* This positions the canvas under the text */
   z-index: 1;
 }
-
-.home-items .common-item li a {
-  background: #008fd5;
-  color: white;
-  padding: 0.75em;
-  border: 5px solid rgba(255, 255, 255, 0.33);
+.card .avatar {
+  position: relative;
+  margin-top: 15px;
+  z-index: 100;
 }
 
-
-.doc-img{
-  /* Webkit for Chrome and Safari */
-  -webkit-transform: scale(1, 1); // This is the scale for the normal size of the image.
-  -webkit-transition-duration: 500ms;
-  -webkit-transition-timing-function: ease-out;
-
-  /* Webkit for Mozila Firefox */
-  -moz-transform: scale(1, 1);
-  -moz-transition-duration: 500ms;
-  -moz-transition-timing-function: ease-out;
-
-  /* Webkit for IE( Version: 11, 10 ) */
-  -ms-transform: scale(1, 1);
-  -ms-transition-duration: 500ms;
-  -ms-transition-timing-function: ease-out;
+.card .avatar img {
+  width: 100px;
+  height: 100px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  border: 5px solid rgba(0,0,30,0.8);
 }
 
-.doc-item:hover .doc-img{
-  /* Webkit for Chrome and Safari */
-  -webkit-transform: scale(1.2, 1.2); // This is the enlarged size scale of the image.
-  -webkit-transition-duration: 500ms;
-  -webkit-transition-timing-function: ease-out;
-
-  /* Webkit for Mozila Firefox */
-  -moz-transform: scale(1.2, 1.2);
-  -moz-transition-duration: 500ms;
-  -moz-transition-timing-function: ease-out;
-
-  /* Webkit for IE( Version: 11, 10 ) */
-  -ms-transform: scale(1.20, 1.20);
-  -ms-transition-duration: 500ms;
-  -ms-transition-timing-function: ease-out;
-
-  opacity: 0.7;
-}
-
-.doc-item:hover .social-lists{
-  margin-top: -2em;
-  opacity: 1;
-}
-
-.list {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-}
-
-.doc-item {
-  margin-bottom: 15px;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.label-status {
-
-}
-
-/*=============== //Home-team ===============*/
