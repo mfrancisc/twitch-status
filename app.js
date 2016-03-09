@@ -32,12 +32,18 @@ function TwitchCtrl ($scope, $q, $http)
    //asynch calls
     $http.jsonp('https://api.twitch.tv/kraken/channels/'+channelName+'?callback=JSON_CALLBACK').then(function(results) { 
     var data = results.data;
+    channel = data;
     channel.name = data.display_name;
     channel.logo = data.logo;
     channel.link = data.url;
     channel.status = data.status;
     channel.statusClass = "label label-success";
     channel.statusType = "Online";
+    channel.video_banner = data.video_banner;
+    channel.followers = data.followers;
+    channel.views = data.views;
+    channel.created_at = data.created_at.substring(0, 10);
+
     if(channel.status === null)
     {
       channel.status = "Currently offline"; 
@@ -51,6 +57,10 @@ function TwitchCtrl ($scope, $q, $http)
     if(channel.logo === null) {
       channel.logo = "https://farm2.staticflickr.com/1509/24968993283_5d084ca703_o.jpg";//unknown image
     }
+
+    if(channel.video_banner === null){
+      channel.video_banner =  'http://data2.whicdn.com/images/139218968/large.jpg';
+    }
     channels.push(channel);
     });
   });
@@ -61,5 +71,3 @@ function TwitchCtrl ($scope, $q, $http)
 
 
 }
-
-
