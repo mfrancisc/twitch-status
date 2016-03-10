@@ -17,19 +17,18 @@
 
       <div id="content">
         <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-          <li class="active"><a href="#all" data-toggle="tab">All <span class="label label-primary">{{count.all}}</span></a></li>
-          <li><a href="#online" data-toggle="tab">Online <span class="label label-success">{{count.online}}</span></a></li>
-          <li><a href="#offline" data-toggle="tab">Offline <span class="label label-danger">{{count.offline}}</span></a></li>
+          <li class="active"><a href="#all"  ng-click="allFilter()" data-toggle="tab">All <span class="label label-primary">{{count.all}}</span></a></li>
+          <li><a href="#online" ng-click="onlineFilter()" data-toggle="tab">Online <span class="label label-success">{{count.online}}</span></a></li>
+          <li><a href="#offline" ng-click="offlineFilter()" data-toggle="tab">Offline <span class="label label-danger">{{count.offline}}</span></a></li>
         </ul>
         <div id="my-tab-content" class="tab-content">
 
-            <!-- All Streamers -->
           <div class="tab-pane active" id="all">
             <div class="container">
               <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 ">
-                  <div class="slogan-section animated fadeInUp clearfix ae-animation-fadeInUp">
-                    <h2 class="text-center"><label class="label label-primary">ALL STREAMERS</label></h2>
+                  <div class="slogan-section animated fadeInUp clearfix ae-animation-fadeInUp page-header ">
+                    <h1 class="text-center">Streamers</h1>
                   </div>
                 </div>
               </div>
@@ -37,13 +36,17 @@
               <div class="container " ng-repeat="channel in channels ">
                 <div class="row panel" >
                   <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 bg_blur " style="background-image: url(' {{channel.video_banner}} ');">
-                    <a href="{{channel.link}}" class="follow_btn hidden-sm hidden-xs"><i class="fa fa-twitch"></i> </i></a>
+                    <a href="{{channel.link}}" target="_blank" class="follow_btn hidden-sm hidden-xs"><i class="fa fa-twitch"></i></a>
                   </div>
                   <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                     <img alt="" src="{{channel.logo}}" class="img-thumbnail picture hidden-sm hidden-xs" />
                     <img alt="" src="{{channel.logo}}" class="img-thumbnail visible-sm visible-xs picture_mob" />
                     <div class="header">
-                      <h1>{{channel.name}}</h1>
+                      <h1>
+                        <a href="{{channel.link}}" target="_blank">
+                          {{channel.name}}
+                        </a>
+                      </h1>
                       <h4>
                         <label class="{{channel.statusClass}} label-status">{{channel.statusType}}</label>
                       </h4>
@@ -56,110 +59,17 @@
                   <div class="col-md-4"></div>
                   <div class="col-md-8 col-xs-12" style="margin: 0px;padding: 0px;">
                     <div class="col-md-4 col-xs-4 well"><i class="fa fa-calendar-o fa-lg"></i> {{channel.created_at | date:'dd/MM/yyyy'}}</div>
-                      <div class="col-md-4 col-xs-4 well"><i class="fa fa-eye fa-lg" alt="views"></i> {{channel.views | number}}</div>
-                      <div class="col-md-4 col-xs-4 well"><i class="fa fa-thumbs-o-up fa-lg"></i> {{channel.followers | number}}</div>
+                    <div class="col-md-4 col-xs-4 well"><i class="fa fa-eye fa-lg" alt="views"></i> {{channel.views | number}}</div>
+                    <div class="col-md-4 col-xs-4 well"><i class="fa fa-thumbs-o-up fa-lg"></i> {{channel.followers | number}}</div>
                   </div>
                 </div>
               </div>
-              <!-- //All Streamers -->
             </div>
 
-              <!-- Online Streamers -->
-            <div class="tab-pane" id="online">
-              <div class="container">
-                <div class="row">
-                  <div class="col-lg-12 col-md-12 col-sm-12 ">
-                    <div class="slogan-section animated fadeInUp clearfix ae-animation-fadeInUp">
-                      <h2 class="text-center" ><label class="label label-success">ONLINE STREAMERS</label></h2>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="container " ng-repeat="channel in channels | filter:'Online'">
-                  <div class="row panel" >
-                  <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 bg_blur " style="background-image: url(' {{channel.video_banner}} ');">
-                      <a href="{{channel.link}}" class="follow_btn hidden-xs hidden-sm"><i class="fa fa-twitch"></i></i></a>
-                    </div>
-                  <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                      <img alt="" src="{{channel.logo}}" class="img-thumbnail picture hidden-xs hidden-sm" />
-                      <img alt="" src="{{channel.logo}}" class="img-thumbnail visible-xs visible-sm picture_mob" />
-                      <div class="header">
-                        <h1>{{channel.name}}</h1>
-                        <h4>
-                          <label class="{{channel.statusClass}} label-status">{{channel.statusType}}</label>
-                        </h4>
-                        <span>{{channel.status}}</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row nav">    
-                    <div class="col-md-4"></div>
-                    <div class="col-md-8 col-xs-12" style="margin: 0px;padding: 0px;">
-                    <div class="col-md-4 col-xs-4 well"><i class="fa fa-calendar-o fa-lg"></i> {{channel.created_at | date:'dd/MM/yyyy'}}</div>
-                      <div class="col-md-4 col-xs-4 well"><i class="fa fa-eye fa-lg" alt="views"></i> {{channel.views | number}}</div>
-                      <div class="col-md-4 col-xs-4 well"><i class="fa fa-thumbs-o-up fa-lg"></i> {{channel.followers | number}}</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- //Online Streamers -->
-            </div>
-
-
-              <!-- Offline Streamers -->
-            <div class="tab-pane" id="offline">
-              <div class="container">
-                <div class="row">
-                  <div class="col-lg-12 col-md-12 col-sm-12 ">
-                    <div class="slogan-section animated fadeInUp clearfix ae-animation-fadeInUp">
-                      <h2 class="text-center"><label class="label label-danger ">OFFLINE STREAMERS</label></h2>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="container " ng-repeat="channel in channels | filter:'Offline'">
-                  <div class="row panel" >
-                  <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 bg_blur " style="background-image: url(' {{channel.video_banner}} ');">
-                      <a href="{{channel.link}}" class="follow_btn hidden-xs hidden-sm"><i class="fa fa-twitch"></i> </i></a>
-                    </div>
-                    <div class="col-md-8  col-xs-12">
-                      <img alt="" src="{{channel.logo}}" class="img-thumbnail picture hidden-xs hidden-sm" />
-                      <img alt="" src="{{channel.logo}}" class="img-thumbnail visible-xs visible-sm picture_mob" />
-                      <div class="header">
-                        <h1>{{channel.name}}</h1>
-                        <h4>
-                          <label class="{{channel.statusClass}} label-status">{{channel.statusType}}</label>
-                        </h4>
-                        <span>{{channel.status}}</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row nav">    
-                    <div class="col-md-4"></div>
-                    <div class="col-md-8 col-xs-12" style="margin: 0px;padding: 0px;">
-                    <div class="col-md-4 col-xs-4 well"><i class="fa fa-calendar-o fa-lg"></i> {{channel.created_at | date:'dd/MM/yyyy'}}</div>
-                      <div class="col-md-4 col-xs-4 well"><i class="fa fa-eye fa-lg" alt="views"></i> {{channel.views | number}}</div>
-                      <div class="col-md-4 col-xs-4 well"><i class="fa fa-thumbs-o-up fa-lg"></i> {{channel.followers | number}}</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- //items -->
-            </div>
-          </div>
+          </div> 
         </div>
-
-
-
-        <script type="text/javascript">
-jQuery(document).ready(function ($) {
-  $('#tabs').tab();
-});
-        </script>    
-      </div> <!-- container -->
-    </div> <!-- container -->
+      </div> <!-- content -->
+    </div> <!-- container-fluid -->
 
   </body>
 

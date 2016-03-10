@@ -1,8 +1,9 @@
 angular.module('TwitchStatus', [])
-.controller('TwitchCtrl', TwitchCtrl);
+.controller('TwitchCtrl', TwitchCtrl)
+.service('TwitchApiCall', TwitchApiCall);
 
-function TwitchCtrl ($scope, $q, $http) 
-{
+function TwitchApiCall($http){
+
   var ExisistingChannels = [
     "freecodecamp", 
     "storbeck",
@@ -13,26 +14,18 @@ function TwitchCtrl ($scope, $q, $http)
     "noobs2ninjas",
     "beohoff"
   ];
-
   var count = {
     all: ExisistingChannels.length,
     online: 0,
     offline: 0
   };
-
-   $scope.channels = [];
-   var channels = [];
-    angular.forEach(ExisistingChannels, function(channelName){
-   var channel = {
-     name : channelName,
-     link : "",
-   };
-
-   //var streamsCall =  $http.jsonp('https://api.twitch.tv/kraken/streams/'+channelName+'?callback=JSON_CALLBACK');
-   //asynch calls
+  var channels = [];
+  angular.forEach(ExisistingChannels, function(channelName){
+    //var streamsCall =  $http.jsonp('https://api.twitch.tv/kraken/streams/'+channelName+'?callback=JSON_CALLBACK');
+    //asynch calls
     $http.jsonp('https://api.twitch.tv/kraken/channels/'+channelName+'?callback=JSON_CALLBACK').then(function(results) { 
-    var data = results.data;
-    channel = data;
+      var data = results.data;
+    var channel = data;
     channel.name = data.display_name;
     channel.logo = data.logo;
     channel.link = data.url;
@@ -61,13 +54,52 @@ function TwitchCtrl ($scope, $q, $http)
     if(channel.video_banner === null){
       channel.video_banner =  'http://data2.whicdn.com/images/139218968/large.jpg';
     }
+
     channels.push(channel);
-    });
+
+  });
   });
 
-  $scope.channels = channels;
-  $scope.count = count;
+  var data = {
+    'channels': channels, 
+    'count': count
+  };
 
+  return {
+        getChannelsData: function() {
+            return data;
+        }
+  };
+}
 
+function TwitchCtrl ($scope, $http, filterFilter, TwitchApiCall) {
+
+   $scope.channels = [];
+   var data = TwitchApiCall.getChannelsData();
+   $scope.channels = data.channels;
+   $scope.count = data.count;
+  // all
+  $scope.allFilter = function(){
+   var data = TwitchApiCall.getChannelsData();
+   $scope.channels = data.channels;
+   $scope.count = data.count;
+  };
+
+  // online
+  $scope.onlineFilter = function(){
+   var data = TwitchApiCall.getChannelsData();
+   $scope.channels = data.channels;
+   $scope.count = data.count;
+  $scope.channels = filterFilter($scope.channels,{statusType:'Online'}); 
+  };
+  
+  // offline
+  $scope.offlineFilter = function(){
+   var data = TwitchApiCall.getChannelsData();
+   $scope.channels = data.channels;
+   $scope.count = data.count;
+    $scope.channels = filterFilter($scope.channels,{statusType:'Offline'}); 
+  };
 
 }
+
