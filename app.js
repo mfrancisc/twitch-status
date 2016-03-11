@@ -52,7 +52,7 @@ function TwitchApiCall($http){
     }
 
     if(channel.video_banner === null){
-      channel.video_banner =  'http://data2.whicdn.com/images/139218968/large.jpg';
+      channel.video_banner =  'https://unsplash.it/500/400/?random';
     }
 
     channels.push(channel);
@@ -102,4 +102,3 @@ function TwitchCtrl ($scope, $http, filterFilter, TwitchApiCall) {
   };
 
 }
-
