@@ -1,3 +1,14 @@
+//navigation active effect
+$("document").ready(function(){
+ 
+  $(".nav a").on("click", function(){
+    $(".nav").find(".active").removeClass("active");
+    $(this).parent().addClass("active");
+  });
+
+});
+
+//angular module
 angular.module('TwitchStatus', [])
 .controller('TwitchCtrl', TwitchCtrl)
 .service('TwitchApiCall', TwitchApiCall);
